@@ -57,7 +57,4 @@ public class Task2 {
             return m;
 
     }
-    public static int loop(){
-    return 0;
-    }
 }
