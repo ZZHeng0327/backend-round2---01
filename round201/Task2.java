@@ -1,30 +1,41 @@
+package round201;
+
 import java.util.Scanner;
 public class Task2 {
     public static void main(String[] args) {
         long m=9800;
         while(true){
-        m=getin(m);
-        if(m==-1){
-            break;}
+            System.out.println("欢迎您使用银行账户管理系统：");
+            System.out.println("请选择您要办理的业务序号：");
+            System.out.println("1.存款" + "   " + "2.取款" + "   " + "3.查询余额" + "   " + "4.退出");
+            Scanner sc2=new Scanner(System.in);
+            int choice= sc2.nextInt();
+            if(choice==4){
+                break;
+            }else{
+                m=getIn(m,choice);
+            }
         }
     }
-    public static long getin(long m){
-        System.out.println("欢迎您使用银行账户管理系统：");
-        System.out.println("请选择您要办理的业务序号：");
-        System.out.println("1.存款" + "   " + "2.取款" + "   " + "3.查询余额" + "   " + "4.退出");
-        Scanner sc=new Scanner(System.in);
-            int a = sc.nextInt();
+    public static long getIn(long m,int choice){
+            Scanner sc=new Scanner(System.in);
+            int a = choice;
             switch (a) {
                 case 1:
                     System.out.println("请输入您要存入的金额：");
                     long b = sc.nextLong();
-                    m += b;
-                    System.out.println("已存完，你账户上的余额为：" + m);
-                    return m;
+                    if(b>=0) {
+                        m += b;
+                        System.out.println("已存完，你账户上的余额为：" + m);
+                        return m;
+                    }
+                    else{
+                        System.out.println("您输入的金额有误，请您重新存入");}
+                    break;
                 case 2:
                     System.out.println("请输入您要取出的金额：");
                     long c = sc.nextLong();
-                    if (c <= m) {
+                    if (c <= m&c>=0) {
                         m -= c;
                         System.out.println("已取出，您账户上的余额为：" + m);
                         return m;
@@ -37,11 +48,16 @@ public class Task2 {
                     return m;
                 case 4:
                     System.out.println("感谢您的使用，欢迎下次光临！");
-                    return m=-1;
+
+                    return m;
+
                 default:
                     System.out.println("暂未开放此业务，qingnin重新选择");
             }
             return m;
 
+    }
+    public static int loop(){
+    return 0;
     }
 }
